@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,ul{padding: 0;margin: 0;}
+			li{list-style: none;}
+			img{border: none;}
+			#banner{width: 730px; height: 336px;overflow: hidden;}
+			.bg{background: #1E1206;position: relative; display: flex;justify-content: center; margin: 50px auto;}
+			#banner li{display: none; }
+			#banner .active{display: block;}
+			
+			
+			#indexes{height: 15px;position: absolute;left: calc(50% - 50px); bottom: 10px;display: flex;}
+			#indexes li{min-width: 15px; height: 15px; border-radius:50%; background: #FFF; margin-right: 8px;cursor: pointer;}
+			#indexes .index_active{background: red;}
+		</style>
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script>
+			$(function(){
+				var arr=[
+				{
+					'img':'0.jpg',
+					'color':'#1E1206'
+				},
+				{
+					'img':'1.jpg',
+					'color':'#6B5087'
+				},
+				{
+					'img':'2.jpg',
+					'color':'#02021A'
+				},
+				{
+					'img':'3.jpg',
+					'color':'#000000'
+				}
+				
+				];
+				arr.forEach(function(item){
+					//console.log(`<li><img src="../img/${item.img}" alt=""></li>`);
+					$('#banner').append(`<li><img src="../img/${item.img}" alt=""></li>`);
+					$('#indexes').append('<li></li>');
+				})
+				
+				var index=0;
+				$('#banner li').first().addClass('active');
+				$('#indexes li').first().addClass('index_active');
+				setInterval(function(){
+					index=(index+1)%4;
+				
+					$('#banner li').eq(index).addClass('active').siblings('.active').removeClass('active');
+					$('#indexes li').eq(index).addClass('index_active').siblings('.index_active').removeClass('index_active');
+					$('.bg').css('background',arr[index].color);
+				},1000)
+
+			})
+		</script>
+	</head>
+	<body>
+		<div class="bg">
+			<ul id="banner"></ul>
+			<ul id="indexes"></ul>
+		</div>
+	</body>
+</html>

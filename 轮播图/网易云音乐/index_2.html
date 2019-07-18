@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,ul{padding: 0;margin: 0;}
+			li{list-style: none;}
+			img{border: 0;}
+			ul{margin: 50px auto; width: 730px; height: 336px; overflow:hidden;}
+			.active{display: block;}
+			ul li{display: none;}
+		</style>
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script>
+			$(function(){
+				var index=0;
+				setInterval(function(){
+					index=(index+1)%4;
+					$('ul li').eq(index).addClass('active').siblings('.active').removeClass('active');
+				},2000)
+				
+			})
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li class="active"><img src="../img/0.jpg" alt=""></li>
+			<li><img src="../img/1.jpg" alt=""></li>
+			<li><img src="../img/2.jpg" alt=""></li>
+			<li><img src="../img/3.jpg" alt=""></li>
+			
+		</ul>
+	</body>
+</html>

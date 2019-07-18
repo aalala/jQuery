@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,ul{padding: 0;margin: 0;}
+			li{list-style: none;}
+			img{border: none;}
+			#banner{ margin:50px auto; width: 730px; height: 336px;overflow: hidden;}
+			.bg{background: #1E1206;}
+			#banner li{display: none;}
+			#banner .active{display: block;}
+		</style>
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script>
+			$(function(){
+				var arr=[
+				{
+					'img':'0.jpg',
+					'color':'#1E1206'
+				},
+				{
+					'img':'1.jpg',
+					'color':'#6B5087'
+				},
+				{
+					'img':'2.jpg',
+					'color':'#02021A'
+				},
+				{
+					'img':'3.jpg',
+					'color':'#000000'
+				},
+				
+				];
+				arr.forEach(function(item){
+					//console.log(`<li><img src="../img/${item.img}" alt=""></li>`);
+					$('#banner').append(`<li><img src="../img/${item.img}" alt=""></li>`);
+				})
+				
+				var index=0;
+				$('#banner li').first().addClass('active');
+				setInterval(function(){
+					index=(index+1)%4;
+				
+					$('#banner li').eq(index).addClass('active').siblings('.active').removeClass('active');
+					$('.bg').css('background',arr[index].color);
+				},1000)
+
+			})
+		</script>
+	</head>
+	<body>
+		<div class="bg">
+			<ul id="banner"></ul>
+			
+		</div>
+	</body>
+</html>
